@@ -1,0 +1,11 @@
+[package]
+name = "merflow"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+postgres = "0.19.4"
+chrono = "0.4"
+
+[dependencies.redis]
+version = "*"
