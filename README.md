@@ -23,8 +23,21 @@ The design is to have merflow running with redis on the loopback (same Pod or VM
 
 The default structure is to SELECT from a users table, inserting key value pairs based on the data.
 
+```
 id: email
 username: password
+```
 
 We assume that the password is a hash or encoded ciphertext :)
 
+The docker container will exit with a failure if run via Docker because it will fail to connect to redis on the loopback.
+The container is designed for Kubernetes to be included in the same Pod as redis, like a sidecar, so that merflow can call localhost:6379
+and reach redis. The environment variable pcred is also required to be set.
+
+
+#### Adding TLS
+
+Note that the postgres connection does not use TLS by default. While this might be okay when a cluster has automatic network encryption and the postgres is inside the cluster, in many production cases, TLS would be desired on the postgres connection, especially if the connection between redis and postgres requires traversal over insecure or untrusted networks, like across the internet or plaintext/insecure LAN or WAN.
+
+See `postgres-native-tls = "0.5.0"` and https://docs.rs/postgres-native-tls/latest/postgres_native_tls/ for adding TLS to merflow.
+And for the postgres side, see https://www.postgresql.org/docs/9.1/ssl-tcp.html, https://docs.bitnami.com/kubernetes/infrastructure/postgresql-ha/administration/enable-tls/ and https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL.Concepts.General.SSL.html, depending on which postgres deployment type is used.
