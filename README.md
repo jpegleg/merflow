@@ -1,9 +1,9 @@
 # merflow
-
+```
 glibc build - passing
 musl libc build - failing (via deps compiling of postgres v0.19.4 - failed to select a version for the requirement `phf = "^0.11"`
   candidate versions found which didn't match: 0.10.1, 0.10.0, 0.9.0, ...)
-
+```
 
 A template microservice template for redis hydration from postgres.
 
