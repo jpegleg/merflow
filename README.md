@@ -41,3 +41,5 @@ Note that the postgres connection does not use TLS by default. While this might 
 
 See `postgres-native-tls = "0.5.0"` and https://docs.rs/postgres-native-tls/latest/postgres_native_tls/ for adding TLS to merflow.
 And for the postgres side, see https://www.postgresql.org/docs/9.1/ssl-tcp.html, https://docs.bitnami.com/kubernetes/infrastructure/postgresql-ha/administration/enable-tls/ and https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL.Concepts.General.SSL.html, depending on which postgres deployment type is used.
+
+The redis connection, while only on the loopback, also has no TLS and no password by default. If using TLS, after redis is set to use TLS, then change the main.rs to use rediss instead of redis. There may be certificates that need to be loaded by merflow in this case.
