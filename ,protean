@@ -1,0 +1,9 @@
+protean_build() {
+  ~/.cargo/bin/cargo check || exit 1
+}
+
+protean_test() {
+  ~/.cargo/bin/cargo clippy
+  ~/.cargo/bin/cargo clean
+  trivy image "localhost:5000/merflow:test" > ../merflow_trivy-report_$(date +%Y%m%d%H%M%S).txt
+}
