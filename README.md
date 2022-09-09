@@ -7,7 +7,7 @@ musl libc build - failing (via deps compiling of postgres v0.19.4 - failed to se
   candidate versions found which didn't match: 0.10.1, 0.10.0, 0.9.0, ...)
 
 
-Held back dep to postgres v0.19.3 tunil v0.19.4 has musl libc deps building.
+Cargo.toml has held back dep of postgres v0.19.3 unil v0.19.4 has musl libc deps building.
 ```
 
 
