@@ -8,11 +8,9 @@ extern crate redis;
 fn redisset(insertit: String, valit: String) -> redis::RedisResult<()> {
     let initc = Utc::now();
     let redis_client = redis::Client::open("redis://localhost:6379/")?;
-    println!("{} - M E R F L O W -> {:?}", initc, &redis_client);
     let mut rcon = redis_client.get_connection()?;
     let seasnails: String = rcon.set(insertit, valit).unwrap();
     let initx = Utc::now();
-    println!("{} - M E R F L O W <- connection to redis local <- data: {:?}", initx, seasnails);
     Ok(())
 }
 
