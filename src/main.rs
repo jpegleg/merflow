@@ -51,7 +51,7 @@ fn main() -> Result<(), Error> {
 
     };
 
-    let millis = time::Duration::from_millis(9000);
+    let millis = time::Duration::from_millis(5987);
     thread::sleep(millis);
   };
 
