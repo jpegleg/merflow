@@ -6,11 +6,9 @@ use std::{thread, time, env};
 extern crate redis;
 
 fn redisset(insertit: String, valit: String) -> redis::RedisResult<()> {
-    let initc = Utc::now();
     let redis_client = redis::Client::open("redis://localhost:6379/")?;
     let mut rcon = redis_client.get_connection()?;
-    let seasnails: String = rcon.set(insertit, valit).unwrap();
-    let initx = Utc::now();
+    let _seasnails: String = rcon.set(insertit, valit).unwrap();
     Ok(())
 }
 
