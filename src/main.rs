@@ -38,13 +38,13 @@ fn main() -> Result<(), Error> {
         let email: &str = row.get(3);
         let hydrox = redisset(id.to_string(), email.to_string());
         let initc = Utc::now();
-        let _conn = match hydrox  {
+        match hydrox  {
             Ok(()) => (),
             Err(error) => panic!("{} Problem connecting to redis: {:?}", initc, error),
         };
         let hydron = redisset(username.to_string(), password.to_string());
         let initn = Utc::now();
-        let _conn = match hydron  {
+        match hydron  {
             Ok(()) => (),
             Err(error) => panic!("{} Problem connecting to redis: {:?}", initn, error),
         };
