@@ -28,7 +28,7 @@ id: email
 username: password
 ```
 
-We assume that the password is a hash or encoded ciphertext :)
+We assume that the password is a encoded ciphertext or hash :)
 
 The docker container will exit with a failure if run via Docker because it will fail to connect to redis on the loopback.
 The container is designed for Kubernetes to be included in the same Pod as redis, like a sidecar, so that merflow can call localhost:6379
